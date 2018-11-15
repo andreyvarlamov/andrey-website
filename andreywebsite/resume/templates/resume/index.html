@@ -1,0 +1,14 @@
+{% if all_activities %}
+	<ul> 
+		{% for activity in all_activities %}
+		<li>{{activity.name}}</li>
+		<li>{{activity.secName}}</li>
+		<li>{{activity.activityType}}</li>
+		<li>{{activity.start_date}}</li>
+		<li>{{activity.end_date}}</li>
+		<li>{{activity.attachments}}</li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p> No polls are available </p>
+{% endif %}
