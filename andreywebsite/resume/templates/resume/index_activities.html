@@ -1,9 +1,9 @@
-{% extends "index.html" %}
+{% extends "resume/index.html" %}
 
 {% block activities %}
-	{% if all_models[0] %}
+	{% if all_models %}
 		<ul> 
-			{% for activity in activities %}
+			{% for activity in all_models %}
 			<li>
 				<p>{{activity.name}}</p>
 				<p>{{activity.secName}}</p>

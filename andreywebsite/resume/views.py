@@ -7,7 +7,7 @@ from .models import Activity, Skill, Interest
 # Create your views here.
 
 class IndexView(generic.ListView):
-	template_name = "resume/index.html"
+	template_name = "resume/index_activities.html"
 	context_object_name = "all_models"
 	queryset = Activity.objects.all()
 	

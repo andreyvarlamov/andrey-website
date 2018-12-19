@@ -1,5 +1,34 @@
 <p>Activities</p>
+{% if all_models %}
+		<ul> 
+			{% for activity in all_models %}
+			<li>
+				<p>{{activity.name}}</p>
+				<p>{{activity.secName}}</p>
+				<ul>
+					<li>{{activity.activityType}}</li>
+					<li>{{activity.start_date}}</li>
+					<li>{{activity.end_date}}</li>
+					<li>{{activity.attachments}}</li>
+				</ul>
+			</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p> No activities are available </p>
+{% endif %}
 
 <p>Skills</p>
+{% if skills %}
+		<ul> 
+			{% for skill in skills %}
+			<li>
+				<p>{{skill.name}}</p>
+			</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p> No skills are available </p>
+{% endif %}
 
 
