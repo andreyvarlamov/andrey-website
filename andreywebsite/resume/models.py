@@ -24,9 +24,19 @@ class ActivityDetail(models.Model):
 
 
 # Other Models
+class SkillType(models.Model):
+	pub_date = models.DateTimeField('date published')
+	name = models.CharField(max_length = 200)
 
 class Skill(models.Model):
-	pass
+	pub_date = models.DateTimeField('date published')
+
+	name = models.CharField(max_length = 200)
+	detail = models.ManyToManyField(Activity)
+	skillType = models.ForeignKey(SkillType, on_delete=models.DO_NOTHING) 
 
 class Interest(models.Model):
-	pass
+	pub_date = models.DateTimeField('date published')
+
+	name = models.CharField(max_length = 200)
+	detail = models.ManyToManyField(Activity)

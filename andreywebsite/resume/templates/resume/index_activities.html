@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{% block activities %}
+	{% if all_models[0] %}
+		<ul> 
+			{% for activity in activities %}
+			<li>
+				<p>{{activity.name}}</p>
+				<p>{{activity.secName}}</p>
+				<ul>
+					<li>{{activity.activityType}}</li>
+					<li>{{activity.start_date}}</li>
+					<li>{{activity.end_date}}</li>
+					<li>{{activity.attachments}}</li>
+				</ul>
+			</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p> No activities are available </p>
+	{% endif %}
+{% endblock %}
