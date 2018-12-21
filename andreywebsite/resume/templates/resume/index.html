@@ -1,16 +1,35 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
 <p>Activities</p>
 {% if all_models %}
 		<ul> 
 			{% for activity in all_models %}
 			<li>
-				<p>{{activity.name}}</p>
-				<p>{{activity.secName}}</p>
-				<ul>
-					<li>{{activity.activityType}}</li>
-					<li>{{activity.start_date}}</li>
-					<li>{{activity.end_date}}</li>
-					<li>{{activity.attachments}}</li>
-				</ul>
+				<div class="container">
+					<div class="row border">
+						<div class="col-8 border">
+							<h3>{{activity.name}}</h4>
+						</div>
+						<div class="col-4 border">
+							<div class="row border">
+									<p>{{activity.start_date}} - {{activity.end_date}}</p>
+							</div>
+						</div>	
+					</div>
+					<div class="row border">
+						<p><em>{{activity.secName}}</em></p>
+					</div>
+					<div class="container border">
+						{% for activity_detail in activity.activitydetail_set.all %}
+						<ul>
+							<li>
+								<p>{{activity_detail.detail}}</p>
+							</li>
+						</ul>
+						{% endfor %}
+					</div>
+				</div>
 			</li>
 			{% endfor %}
 		</ul>
