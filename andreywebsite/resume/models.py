@@ -5,7 +5,8 @@ from django.db import models
 class Activity(models.Model):
 	def __str__(self):
 		return self.name
-	pub_date = models.DateTimeField('date publishesd')
+
+	pub_date = models.DateTimeField('date published')
 
 	name = models.CharField(max_length = 200)
 	secName = models.CharField(max_length = 200)
@@ -23,7 +24,7 @@ class ActivityDetail(models.Model):
 	def __str__(self):
 		return self.detail
 
-	pub_date = models.DateTimeField('date published')
+	pub_date = models.DateTimeField('date published', null=True)
 	detail = models.CharField(max_length = 200)
 	activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
 
