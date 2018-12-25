@@ -1,53 +1,63 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<p>Activities</p>
-{% if all_models %}
-		<ul> 
-			{% for activity in all_models %}
-			<li>
-				<div class="container">
-					<div class="row border">
-						<div class="col-8 border">
-							<h3>{{activity.name}}</h4>
-						</div>
-						<div class="col-4 border">
-							<div class="row border">
-									<p>{{activity.start_date}} - {{activity.end_date}}</p>
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+		<title>Index View</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<h1 class="display-4 text-center text-sm-left">ACTIVITIES</h1>
+			{% if all_models %}
+				<h2 class="display-6 text-center text-sm-left">Co-op Work Experience</h2>
+				{% for activity in all_models %}
+					{% if activity.activity_type == 'COOPW' %}
+						<div class="card p-3 bg-light mb-3">
+							<div class="row align-items-center">
+								<div class="col-12 col-sm-6">
+									<span class="h5">{{activity.name}},  </span>
+									<span>{{activity.location}}</span>
+								</div>
+								<div class="col-12 col-sm-6 text-md-right">
+									<span class="h6">{{activity.start_end_date}}</span>
+								</div>	
 							</div>
-						</div>	
-					</div>
-					<div class="row border">
-						<p><em>{{activity.secName}}</em></p>
-					</div>
-					<div class="container border">
-						{% for activity_detail in activity.activitydetail_set.all %}
-						<ul>
-							<li>
-								<p>{{activity_detail.detail}}</p>
-							</li>
-						</ul>
-						{% endfor %}
-					</div>
-				</div>
-			</li>
-			{% endfor %}
-		</ul>
-	{% else %}
-		<p> No activities are available </p>
-{% endif %}
+							<div class="row align-items-center">
+								<div class="col text-justified">
+									<span><em>{{activity.position}}</em></span>
+								</div>
+							</div>
+							<div class="row align-items-center">
+								<div class="col justified">
+									<ul class="m-0">
+										{% for activity_detail in activity.activitydetail_set.all %}
+										<li>
+											{{activity_detail.detail}}
+										</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					{% endif %}	
+				{% endfor %}
+			{% else %}
+				<span> No activities are available </span>
+			{% endif %}
+		</div>
 
-<p>Skills</p>
-{% if skills %}
-		<ul> 
-			{% for skill in skills %}
-			<li>
-				<p>{{skill.name}}</p>
-			</li>
-			{% endfor %}
-		</ul>
-	{% else %}
-		<p> No skills are available </p>
-{% endif %}
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	</body>
+</html>	
+
 
 

@@ -9,9 +9,7 @@ class ActivityDetailInline(admin.StackedInline):
 
 class ActivityAdmin(admin.ModelAdmin):
 	fieldsets = [
-		('Activity info:',	{'fields': ['name', 'secName', 'activityType']}),
-		('Activity dates:', {'fields': ['start_date', 'end_date', 'pub_date']}),
-		(None, 				{'fields': ['attachments']}),
+		('ACTIVITY INFO',	{'fields': ['name', 'activity_type', 'position', 'location', 'start_end_date', 'attachments']}),
 	]
 	inlines = [ActivityDetailInline]
 
