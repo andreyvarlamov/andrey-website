@@ -17,3 +17,8 @@ class IndexView(generic.ListView):
 		context['skills'] = Skill.objects.all()
 		context['interests'] = Interest.objects.all()
 		return context
+
+class ActivityView(generic.ListView):
+	template_name = "resume/activities.html"
+	context_object_name = "activities"
+	queryset = Activity.objects.all()
